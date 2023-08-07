@@ -12,7 +12,6 @@ import './images/logo9.png'
 import './images/profile-logo.png'
 import './images/bell1.png'
 import './images/globe-icon.png'
-import './images/italy.png'
 
 // Import domUpdates
 
@@ -20,20 +19,22 @@ import
 {signInButton,
 showMainPage,
 updateTripsPage,
-getDestinationNums,
-getDestinationNames, 
+createUpcomingCards,
+createPendingCards,
+createPastCards
 } from './domUpdates';
 
 //Import functions
-import { getUserTrips, getUpcomingTrips, createTripCard  } from './functions';
+import { getRandomCurrentUser, getUserTrips, sortTripsByDate, addDates, addLocationInfo, dayjs, getUpcoming, getPending, getPast, getAnnualArray } from './functions';
 
 // Import API Calls
 import {getData} from './apiCalls';
 
+
 // Main Data Object
 
 const mainData = {
-    today: '2023/08/04',
+    today: dayjs(),
 }
 
 signInButton.addEventListener('click', showMainPage)
@@ -48,29 +49,34 @@ window.addEventListener('load', () => {
         console.log('mainData.trips', mainData.trips)
         console.log('mainData.travelers', mainData.travelers)
         getUserData()
+        getDescriptiveData()
+        generatePage()
     })
-    .then(getDescriptiveData())
-    .then(generatePage())
+    // .then(getDescriptiveData())
+    // .then(generatePage())
   })
 
 
 
   const getUserData = () => {
-    mainData.currentUser = mainData.travelers[2].id
-    mainData.userTrips = getUserTrips(mainData.trips, mainData.currentUser)
+    mainData.currentUser = getRandomCurrentUser(mainData.travelers)
+    mainData.userTrips = getUserTrips(mainData.trips, mainData.currentUser.id)
     console.log('mainData.currentUser',  mainData.currentUser)
     console.log('mainData.userTrips', mainData.userTrips)
   }
   const getDescriptiveData = () => {
-    mainData.userNums = getDestinationNums(mainData.userTrips)
-    mainData.locationNames = getDestinationNames(mainData.userNums, mainData.destinations)
-    console.log("mainData.userNums", mainData.userNums)
-    console.log("mainData.locationNames", mainData.locationNames)
-    mainData.tripCards = createTripCard(mainData.userTrips, mainData.destinations)
+    addDates(mainData.userTrips);
+    addLocationInfo(mainData.userTrips, mainData.destinations);
+    sortTripsByDate(mainData.userTrips);
+    console.log('mainData.userTrips', mainData.userTrips)
+    
   }
   const generatePage = () => {
-    mainData.currentUser = mainData.travelers[0];
-    updateTripsPage(mainData.travelers[0].name, mainData.locationNames, mainData.trips[0].destinationID)
+    updateTripsPage(mainData.currentUser.name);
+    createPendingCards(getPending(mainData.userTrips));
+    createUpcomingCards(getUpcoming(mainData.userTrips));
+    createPastCards(getPast(mainData.userTrips))
+
   }
 
 

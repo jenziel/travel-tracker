@@ -7,6 +7,7 @@ export const tripsTest = document.querySelector('.user-trips')
 export const upcomingTrip1 = document.querySelector('.location')
 export const timeline = document.querySelector('.timeline')
 export const numBookings = document.querySelector('.numBookings')
+export const annualSpendingMsg = document.querySelector('#annual-spending')
 // Event Handlers:
 
 // signInButton.addEventListener('click', showMainPage)
@@ -19,8 +20,9 @@ export const showMainPage = () => {
 }
 
 
-export const updateTripsPage = (travelerName) => {
+export const updateTripsPage = (travelerName, annualSpending) => {
     tripsTitle.innerText = `${travelerName}'s Trips`;
+    annualSpendingMsg.innerText = `This year you've spent $${annualSpending}.`
 }
 export const createUpcomingCards = (userTrips) => {
     const upcomingContainer = document.getElementById('upcomingContainer');

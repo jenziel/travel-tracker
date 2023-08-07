@@ -84,12 +84,35 @@ export const getAnnualArray = (userTrips) => {
     const today = dayjs();
     const oneYearAgo = today.subtract(1, 'year');
     const pastYearData = userTrips.filter(trip => {
-        const tripYear = dayjs(item.startDate).year();
-        return tripYear.isBetween(lastYear, today, null, '[]');
+        const tripDate = dayjs(trip.startDate);
+        return tripDate.isAfter(oneYearAgo) && tripDate.isBefore(today);
     })
+    console.log("pastYearData", pastYearData)
     return pastYearData
 }
 
 export const getAnnualSpending = (annualTrips) => {
-    
+    const annualCost = annualTrips.reduce((sum, trip) => {
+        
+        const numDays = trip.duration;
+        console.log("numDays", numDays)
+        const numBookings = trip.travelers;
+        console.log("numBookings", numBookings)
+        const dailyHotelCost = trip.fullDestinationInfo.estimatedLodgingCostPerDay;
+        console.log("dailyHotelCost:", dailyHotelCost)
+        const roundTripFlight = trip.fullDestinationInfo.estimatedFlightCostPerPerson;
+        const flightsTotal = (roundTripFlight * numBookings) 
+        console.log("flightsTotal", flightsTotal)
+        const lodgingsTotal = (numDays * dailyHotelCost) * numBookings 
+        console.log("lodgingsTotal", lodgingsTotal)
+        const totalBeforeTax = (flightsTotal) + (lodgingsTotal);
+        console.log(totalBeforeTax, "totalb4Tax")
+        const AllFeesIncluded = (totalBeforeTax * .1) + totalBeforeTax;
+        console.log("w all the feeees", AllFeesIncluded)
+        sum += AllFeesIncluded;
+        console.log("sum", sum)
+        return sum
+    }, 0)
+    console.log("annualCost", annualCost)
+    return annualCost
 }

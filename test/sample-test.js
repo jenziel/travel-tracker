@@ -4,7 +4,8 @@ const expect = chai.expect;
 import {getUserTrips,
   addDates,
   addLocationInfo,
-  sortTripsByDate} 
+  sortTripsByDate,
+  getAnnualArray} 
 from '../src/functions.js';
 
 describe('See if the tests are running', function() {
@@ -217,7 +218,7 @@ describe('it should integrate destination data with the trip data', function(){
   });
 
 
-  it('it should create a userTrips object with 3 properties: upcoming, pending, and past', function(){
+  it('it should generate an end-date', function(){
     expect(addDates(userTrips2)).to.deep.equal(
       [  {
         "id": 2,
@@ -242,45 +243,90 @@ it('Should add descriptive locations', function(){
         "travelers": 5,
         "duration": 18,
         "fullDestinationInfo": {
-               "alt": "aerial photography of rocky mountain under cloudy sky",
-                "destination": "Castries, St Lucia",
-                "estimatedFlightCostPerPerson": 90,
-               "estimatedLodgingCostPerDay": 650,
-               "id": 49,
-               "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
-               },
+              "alt": "people crossing the street during the day surrounded by tall buildings and advertisements",
+              "destination": "New York, New York",
+              "estimatedFlightCostPerPerson": 200,
+              "estimatedLodgingCostPerDay": 175,
+              "id": 25,
+              "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        },
         "endDate": "10-22-2022",
-        "locationName": "Castries, St Lucia",
+        "locationName": "New York, New York",
         "startDate": "10-04-2022",
         "status": "approved",
         "suggestedActivities": []
   }])
 })
 
-it('Should add a key to describe past. pending, upcoming', function(){
+it('Should add a \'category\' key to describe past, pending, upcoming', function(){
   let formattedUserTrips = addDates(userTrips2);
   let tripsWithLocations = addLocationInfo(formattedUserTrips, allDestinationsData);
   expect(sortTripsByDate(tripsWithLocations)).to.deep.equal([{
     "id": 2,
     "userID": 35,
+    "category": "past",
     "destinationID": 25,
     "travelers": 5,
-    "category": "past",
     "duration": 18,
     "fullDestinationInfo": {
-           "alt": "aerial photography of rocky mountain under cloudy sky",
-            "destination": "Castries, St Lucia",
-            "estimatedFlightCostPerPerson": 90,
-           "estimatedLodgingCostPerDay": 650,
-           "id": 49,
-           "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
-           },
+          "alt": "people crossing the street during the day surrounded by tall buildings and advertisements",
+          "destination": "New York, New York",
+          "estimatedFlightCostPerPerson": 200,
+          "estimatedLodgingCostPerDay": 175,
+          "id": 25,
+          "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+    },
     "endDate": "10-22-2022",
-    "locationName": "Castries, St Lucia",
+    "locationName": "New York, New York",
     "startDate": "10-04-2022",
     "status": "approved",
     "suggestedActivities": []
 }])
 })
       })
+describe('it should calculate the total cost spent for a given year', function(){
+  it('should return an array of trips booked within a year', function(){
+    let userTrips = [{category: "past",
+    destinationID: 33,
+    duration: 6,
+    endDate: "10-23-2022",
+    fullDestinationInfo: {id: 33, destination: 'Brussels, Belgium', estimatedLodgingCostPerDay: 1000, estimatedFlightCostPerPerson: 110, image: 'https://images.unsplash.com/photo-1559113202-c916b…cHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'},
+    id: 12,
+    locationName: "Brussels, Belgium",
+    startDate: "10-17-2022",
+    status: "approved",
+    suggestedActivities: [],
+    travelers: 6,
+    userID: 33},
+    {
+    category: "past",
+    destinationID: 29,
+    duration: 5,
+    endDate: "07-22-2020",
+    fullDestinationInfo: {id: 29, destination: 'Willemstad, Curaçao', estimatedLodgingCostPerDay: 80, estimatedFlightCostPerPerson: 1100, image: 'https://images.unsplash.com/photo-1541748603027-cb…cHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80'},
+    id: 30,
+    locationName: "Willemstad, Curaçao",
+    startDate: "07-17-2020",
+    status: "approved",
+    suggestedActivities: [],
+    travelers: 1,
+    userID: 33
+    }]
+    expect(getAnnualArray(userTrips)).to.deep.equal([{
+      category: "past",
+      destinationID: 33,
+      duration: 6,
+      endDate: "10-23-2022",
+      fullDestinationInfo: {id: 33, destination: 'Brussels, Belgium', estimatedLodgingCostPerDay: 1000, estimatedFlightCostPerPerson: 110, image: 'https://images.unsplash.com/photo-1559113202-c916b…cHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'},
+      id: 12,
+      locationName: "Brussels, Belgium",
+      startDate: "10-17-2022",
+      status: "approved",
+      suggestedActivities: [],
+      travelers: 6,
+      userID: 33}])
+  })
+  
+})
+
 

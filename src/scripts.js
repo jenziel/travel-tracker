@@ -25,7 +25,7 @@ createPastCards
 } from './domUpdates';
 
 //Import functions
-import { getRandomCurrentUser, getUserTrips, sortTripsByDate, addDates, addLocationInfo, dayjs, getUpcoming, getPending, getPast, getAnnualArray } from './functions';
+import { getRandomCurrentUser, getUserTrips, sortTripsByDate, addDates, addLocationInfo, dayjs, getUpcoming, getPending, getPast, getAnnualArray, getAnnualSpending } from './functions';
 
 // Import API Calls
 import {getData} from './apiCalls';
@@ -59,7 +59,8 @@ window.addEventListener('load', () => {
 
 
   const getUserData = () => {
-    mainData.currentUser = getRandomCurrentUser(mainData.travelers)
+    mainData.currentUser = mainData.travelers[32]
+    // getRandomCurrentUser(mainData.travelers)
     mainData.userTrips = getUserTrips(mainData.trips, mainData.currentUser.id)
     console.log('mainData.currentUser',  mainData.currentUser)
     console.log('mainData.userTrips', mainData.userTrips)
@@ -69,10 +70,10 @@ window.addEventListener('load', () => {
     addLocationInfo(mainData.userTrips, mainData.destinations);
     sortTripsByDate(mainData.userTrips);
     console.log('mainData.userTrips', mainData.userTrips)
-    
+
   }
   const generatePage = () => {
-    updateTripsPage(mainData.currentUser.name);
+    updateTripsPage(mainData.currentUser.name, getAnnualSpending(getAnnualArray(mainData.userTrips)));
     createPendingCards(getPending(mainData.userTrips));
     createUpcomingCards(getUpcoming(mainData.userTrips));
     createPastCards(getPast(mainData.userTrips))

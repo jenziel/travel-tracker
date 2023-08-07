@@ -53,11 +53,15 @@
             <input id="current-password" name="current-password" type="password" autocomplete="current-password" aria-describedby="password-constraints" required>
             <button id="toggle-password" type="button" aria-label="Show password as plain text. Warning: this will display your password on the screen.">Show password</button>
           </section>
-          <button id="signin">Sign in</button> 
+          <button class="submitBtn" id="signin">Sign in</button> 
         </form>
     </section>
     <section class="lower-pane-2 hidden">
+     
       <div class="center-container">
+        <button id="go-to-booking-page">
+          Book A Trip
+        </button>
         <p id="annual-spending">Year-to-Date spending:</p>
       <h1 class="trips-header">Trips</h1>
       
@@ -66,6 +70,30 @@
       <p class="type-of-trip" id="pastContainer">Past:</p>
       </div>
     </section> 
+    <section class="lower-pane-3 hidden">
+      <div class="booking-panel">
+        <h1 class="new-booking-header">Book A Trip</h1>
+        <div class="date-section">
+          <label for="search-dates">Search Dates: </label>
+          <input type="date" placeholder="search for dates" id="search-dates" min="2023-08-01">
+
+        </div>
+        <div class="location-section">
+          <label for="accordion-btn">Select a Location:</label>
+          <div class="location-dropdown">
+          <button id="accordion-btn" class="accordion-btn">Select a location
+            <img src="../src/images/down-arrow.png" class="icon"></button>
+          <div id="location-list" class="location-list">
+            <ul>
+
+            </ul>
+          </div>
+        </div>
+        </div>
+
+        <button class="submitBtn">Submit</button>
+      </div>
+    </section>
   </main>
     
     

@@ -160,10 +160,9 @@ aside {
   height: 90vh;
   width: 30vw;
 }
-
+.booking-panel,
 .login-box {
   padding: 10px;
-  border: solid 2px red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -206,8 +205,8 @@ aside {
   border: none;
   cursor: pointer;
  }
-
-#signin {
+#go-to-booking-page,
+.submitBtn {
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 10px;
@@ -226,6 +225,7 @@ h1,
 .location {
   font-family: 'Electrolux Sans', 'san-serif';
 }
+.booking-panel,
 .login-box {
   padding: 20px;
   background-color: #f0f0f0;
@@ -312,14 +312,130 @@ button > p {
    flex-direction: column;
    justify-content: space-evenly;
 }
+.new-booking-header,
 .trips-header {
   margin-top: 10px;
   margin-bottom: 3vh;
 }
+
 .type-of-trip {
   margin-bottom: 5vh;
 }
 
+#go-to-booking-page {
+
+
+}
+.lower-pane-3 {
+  background-color: skyblue;
+  padding: 20px;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+}
+.booking-panel {
+  height: 60vh;
+  width: 50vw;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+#search-dates {
+  width: 15vw;
+}
+.flatpickr {
+  height: 100%;
+  width: 100%;
+}
+
+.location-dropdown {
+  position: relative;
+  width: 15vw;
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.location-list {
+  display: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.location-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.location-list li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.location-list li:last-child {
+  border-bottom: none;
+}
+
+.location-list li:hover {
+  background-color: #f0f0f0;
+}
+/* .location-dropdown {
+  position: relative;
+  width: 400px;
+}
+
+.location-list {
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-height: 150px; 
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: none;
+}
+li {
+  color: black;
+}
+.location-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.location-list li:hover {
+  background-color: #f0f0f0;
+} */
+.location-section > label {
+  margin-top: 1vh;
+}
+.location-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 4vh;
+  margin-top: 4vh;
+}
+.icon {
+  display: block;
+}
 .hidden {
   display: none;
 }

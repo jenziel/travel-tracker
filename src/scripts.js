@@ -6,6 +6,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './images/down-arrow.png'
 import './images/logo3.png'
 import './images/globe_logo.jpg'
 import './images/logo9.png'
@@ -13,23 +14,38 @@ import './images/profile-logo.png'
 import './images/bell1.png'
 import './images/globe-icon.png'
 
+
+
 // Import domUpdates
 
 import 
 {signInButton,
 showMainPage,
+showBookingPage,
+goToBookingBtn,
 updateTripsPage,
 createUpcomingCards,
 createPendingCards,
-createPastCards
+createPastCards, 
+populateLocationDropdown,
+locationInput,
+locationList,
+accordionBtn
 } from './domUpdates';
 
 //Import functions
 import { getRandomCurrentUser, getUserTrips, sortTripsByDate, addDates, addLocationInfo, dayjs, getUpcoming, getPending, getPast, getAnnualArray, getAnnualSpending } from './functions';
 
 // Import API Calls
-import {getData} from './apiCalls';
+import {getData, postNewTripBooking} from './apiCalls';
 
+// Import Flatpickr
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.css';
+
+// flatpickr('#date-picker', {
+ 
+// });
 
 // Main Data Object
 
@@ -38,6 +54,16 @@ const mainData = {
 }
 
 signInButton.addEventListener('click', showMainPage)
+goToBookingBtn.addEventListener('click', showBookingPage)
+accordionBtn.addEventListener('click', () => {
+  locationList.style.display = locationList.style.display === 'block' ? 'none' : 'block';
+});
+
+document.addEventListener('click', event => {
+  if (!accordionBtn.contains(event.target) && !locationList.contains(event.target)) {
+    locationList.style.display = 'none';
+  }
+});
 
 window.addEventListener('load', () => {
     getData
@@ -59,8 +85,8 @@ window.addEventListener('load', () => {
 
 
   const getUserData = () => {
-    mainData.currentUser = mainData.travelers[32]
-    // getRandomCurrentUser(mainData.travelers)
+    mainData.currentUser =    getRandomCurrentUser(mainData.travelers)
+    // mainData.travelers[32]
     mainData.userTrips = getUserTrips(mainData.trips, mainData.currentUser.id)
     console.log('mainData.currentUser',  mainData.currentUser)
     console.log('mainData.userTrips', mainData.userTrips)
@@ -70,7 +96,7 @@ window.addEventListener('load', () => {
     addLocationInfo(mainData.userTrips, mainData.destinations);
     sortTripsByDate(mainData.userTrips);
     console.log('mainData.userTrips', mainData.userTrips)
-
+    populateLocationDropdown(mainData.destinations)
   }
   const generatePage = () => {
     updateTripsPage(mainData.currentUser.name, getAnnualSpending(getAnnualArray(mainData.userTrips)));

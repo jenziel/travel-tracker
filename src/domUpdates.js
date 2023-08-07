@@ -8,6 +8,11 @@ export const upcomingTrip1 = document.querySelector('.location')
 export const timeline = document.querySelector('.timeline')
 export const numBookings = document.querySelector('.numBookings')
 export const annualSpendingMsg = document.querySelector('#annual-spending')
+export const goToBookingBtn = document.querySelector('#go-to-booking-page')
+export const bookingPage = document.querySelector('.lower-pane-3')
+export const locationInput = document.getElementById('location-input');
+export const locationList = document.getElementById('location-list');
+export const accordionBtn = document.getElementById('accordion-btn');
 // Event Handlers:
 
 // signInButton.addEventListener('click', showMainPage)
@@ -18,7 +23,10 @@ export const showMainPage = () => {
     loginPage.classList.add('hidden');
     tripsPage.classList.remove('hidden');
 }
-
+export const showBookingPage = () => {
+    tripsPage.classList.add('hidden')
+    bookingPage.classList.remove('hidden')
+}
 
 export const updateTripsPage = (travelerName, annualSpending) => {
     tripsTitle.innerText = `${travelerName}'s Trips`;
@@ -82,6 +90,19 @@ export const createPastCards = (userTrips) => {
   
 }
 
-
+export const populateLocationDropdown = (destinations) => {
+    const locationListUl = locationList.querySelector('ul');
+    locationListUl.innerHTML = '';
+    destinations.forEach(destination => {
+      const listItem = document.createElement('li');
+      listItem.textContent = destination.destination;
+      listItem.addEventListener('click', () => {
+        accordionBtn.textContent = destination.destination;
+        locationList.style.display = 'none';
+      });
+      locationListUl.appendChild(listItem);
+    });
+  }
+  
 
 

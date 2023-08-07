@@ -36,85 +36,11 @@
       </button>
     </div>
   </header>
-    <div class="lower-pane-2 ">
-      <div class="center-container">
-      <h1 class="trips-header">Trips</h1>
-      <p class="type-of-trip"> Upcoming:</p>
-      <div class="trip-card">
-        <img src="./images/italy.png">
-          <div class="trip-info-container">
-            <p class="location"> Sao Paolo</p>
-            <p>Oct 24 - Oct 31</p>
-            <p>1 booking</p>
-          </div>
-        <p class="type-of-trip"> Pending:</p>
-        <p class="user-trips"></p>
-        <p class="type-of-trip"> Past:</p>
-      </div>
-      <!-- <div id="accordionGroup" class="accordion">
-        <h3>
-          <button type="button" aria-expanded="true" class="accordion-trigger" aria-controls="sect1" id="accordion1id">
-            <span class="accordion-title">
-              Pending:
-              <span class="accordion-icon"></span>
-            </span>
-          </button>
-        </h3>
-        <div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel">
-          <div>
-            
-            <fieldset>
-              <p>
-                <label for="cufc1">Name<span aria-hidden="true">*</span>:</label>
-                <input type="text" value="" name="Name" id="cufc1" class="required" aria-required="true">
-              </p>
-              <p>
-                <label for="cufc2">Email<span aria-hidden="true">*</span>:</label>
-                <input type="text" value="" name="Email" id="cufc2" aria-required="true">
-              </p>
-              <p>
-                <label for="cufc3">Phone:</label>
-                <input type="text" value="" name="Phone" id="cufc3">
-              </p>
-              <p>
-                <label for="cufc4">Extension:</label>
-                <input type="text" value="" name="Ext" id="cufc4">
-              </p>
-              <p>
-                <label for="cufc5">Country:</label>
-                <input type="text" value="" name="Country" id="cufc5">
-              </p>
-              <p>
-                <label for="cufc6">City/Province:</label>
-                <input type="text" value="" name="City_Province" id="cufc6">
-              </p>
-            </fieldset>
-          </div>
-        </div>
-        <h3>
-          <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect2" id="accordion2id">
-            <span class="accordion-title">
-              Past:
-              <span class="accordion-icon"></span>
-            </span>
-          </button>
-        </h3>
-        <div id="sect2" role="region" aria-labelledby="accordion2id" class="accordion-panel" hidden="">
-          <div>
-            <fieldset>
-              <p>
-              </p>
-            </fieldset>
-          </div>
-        </div>
-      </div> -->
-    </div>
-    </div> 
-    <div class="lower-pane-1 hidden">
-      <aside>
+  <main>
+    <section class="lower-pane-1">
+      <!-- <aside class="lower-pane-1">
         <p></p>
-      </aside>
-      <main>
+      </aside> -->
         <form action="" method="post" id="form" name="form" class="login-box" >
           <p class="sign-in">Sign in</p>
           <p> Don't have an account? <span class="create-acct"> Create an account</span></p>
@@ -129,13 +55,20 @@
           </section>
           <button id="signin">Sign in</button> 
         </form>
-      </main>
+    </section>
+    <section class="lower-pane-2 hidden">
+      <div class="center-container">
+        <p id="annual-spending">Year-to-Date spending:</p>
+      <h1 class="trips-header">Trips</h1>
       
-          
-      
-    </div>
+      <p class="type-of-trip" id="upcomingContainer"> Upcoming:</p>
+      <p class="type-of-trip" id="pendingContainer"> Pending:</p>
+      <p class="type-of-trip" id="pastContainer">Past:</p>
+      </div>
+    </section> 
   </main>
-
+    
+    
   
 
   

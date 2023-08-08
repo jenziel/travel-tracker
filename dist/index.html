@@ -16,28 +16,28 @@
   <header>
     <div class="header-left-side">
       <div class="circle">
-        <img src="./images/logo9.png">
+        <img src="./images/logo9.png" alt="blue globe with a red location pin icon">
       </div>
       <h1>Travel Tracker</h1>
     </div>
     <div class="header-right-side">
-      <button class="language">
-        <img src="./images/globe-icon.png" id="globe">
+      <button class="language" title="language menu">
+        <img src="./images/globe-icon.png" id="globe" alt="globe icon">
         <p> English</p>
       </button>
       <button class="trips">
         <p>Trips</p>
       </button>
-      <button class="notifications">
-        <img src="./images/bell1.png">
+      <button class="notifications" title="show notifications">
+        <img src="./images/bell1.png" alt="bell icon">
       </button>
-      <button class="user-profile">
-        <img src="./images/profile-logo.png">
+      <button class="user-profile" title="view profile">
+        <img src="./images/profile-logo.png" alt="silhouette of a person icon">
       </button>
     </div>
   </header>
   <main>
-    <section class="lower-pane-1">
+    <section class="lower-pane-1 site-page">
       <!-- <aside class="lower-pane-1">
         <p></p>
       </aside> -->
@@ -56,7 +56,7 @@
           <button class="submitBtn" id="signin">Sign in</button> 
         </form>
     </section>
-    <section class="lower-pane-2 hidden">
+    <section class="lower-pane-2 hidden site-page">
      
       <div class="center-container">
         <button id="go-to-booking-page">
@@ -70,29 +70,42 @@
       <p class="type-of-trip" id="pastContainer">Past:</p>
       </div>
     </section> 
-    <section class="lower-pane-3 hidden">
+    <section class="lower-pane-3 hidden site-page">
       <div class="booking-panel">
         <h1 class="new-booking-header">Book A Trip</h1>
         <div class="date-section">
-          <label for="search-dates">Search Dates: </label>
-          <input type="date" placeholder="search for dates" id="search-dates" min="2023-08-01">
-
+          <label for="start-date">Start Date: </label>
+          <input type="date" placeholder="search for dates" id="start-date" min="2023-08-07"required>
+        </div>
+        <div class="date-section">
+          <label for="end-date">End Date: </label>
+          <input type="date" placeholder="search for dates" id="end-date" min="2023-08-07" required>
         </div>
         <div class="location-section">
-          <label for="accordion-btn">Select a Location:</label>
-          <div class="location-dropdown">
-          <button id="accordion-btn" class="accordion-btn">Select a location
-            <img src="../src/images/down-arrow.png" class="icon"></button>
-          <div id="location-list" class="location-list">
-            <ul>
-
-            </ul>
-          </div>
+          <label for="location-dropdown">Select a Location:</label>
+          <select id="location-dropdown">
+            <option id="selected-location" value="" disabled selected>Select a location</option>
+          </select>
         </div>
+        <div class="num-travelers">
+          <label for="num-travelers">Number of travelers:</label>
+          <input type="number" placeholder="enter number of travelers" id="num-travelers" min=1 required>
         </div>
-
-        <button class="submitBtn">Submit</button>
+        <button class="submitBtn" id="newBookingBtn">Submit</button>
+        </div>
       </div>
+      
+    </section>
+    <section class="booking-panel-2 hidden">
+      <h1 class="new-booking-header">Confirm this trip?</h1>
+      
+      <p>You have 24 hours to cancel this booking when you press submit.</p>
+      <p class="type-of-trip" id="pendingTripContainer"></p>
+      <div class="button-box">
+        <button id="go-back-btn">back to booking page</button>
+        <button id="confirm-btn">submit</button>
+      </div>
+      
     </section>
   </main>
     

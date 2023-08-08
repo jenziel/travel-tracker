@@ -1,10 +1,10 @@
 export const dayjs = require('dayjs');
 
-export const getRandomCurrentUser = (travelers) => {
-    const randomIndex = Math.floor(Math.random() * travelers.length);
-    let currentUser = travelers[randomIndex];
-    return currentUser;
-  };
+// export const getRandomCurrentUser = (travelers) => {
+//     const randomIndex = Math.floor(Math.random() * travelers.length);
+//     let currentUser = travelers[randomIndex];
+//     return currentUser;
+//   };
 
 export const getUserTrips = (allTrips, currentUserId) => {
     const filteredTrips = allTrips.filter(trip => {
@@ -30,6 +30,18 @@ export const addDates = (userTrips) => {
     })
     console.log('updatedTrips', updatedTrips)
     return updatedTrips
+}
+export const sortSequentially = (updatedTrips) => {
+    const sortedByClosestDate = updatedTrips.sort((a,b) =>{
+        console.log("a.startDate", a.startDate)
+        console.log("b.startDate", b.startDate)
+        const startDateA = dayjs(a.startDate)
+        const startDateB = dayjs(b.startDate)
+        return startDateA.diff(startDateB, 'day')
+    })
+ 
+    console.log("sortedByClosestDate", sortedByClosestDate)
+    return sortedByClosestDate
 }
 export const addLocationInfo = (userTrips, allDestinations) => {
     const updatedTrips = userTrips.map(trip => {
@@ -116,3 +128,15 @@ export const getAnnualSpending = (annualTrips) => {
     console.log("annualCost", annualCost)
     return annualCost
 }
+export const searchDestinationByName = (locationName, destinations) => {
+    const destinationObject = destinations.find(destination => 
+        destination.destination === locationName)
+        return destinationObject
+ }
+
+ export const calculateNumDays = (startDate, endDate) => {
+    const start = dayjs(startDate);
+    const end = dayjs(endDate);
+    const numDays = end.diff(start, 'day');
+    return numDays
+ }

@@ -5,7 +5,7 @@ const travelersUrl = 'http://localhost:3001/api/v1/travelers'
 const destinationsUrl = 'http://localhost:3001/api/v1/destinations'
 const newTripUrl = 'http://localhost:3001/api/v1/trips'
 const endpoints = [tripsUrl, travelersUrl, destinationsUrl]
-
+import dayjs from "dayjs"
 export const getData = () => {
     console.log('fetch requests go here 2')
     return endpoints.map((url) =>
@@ -14,16 +14,21 @@ export const getData = () => {
     .catch((error) => console.log(error))
     )
 }
-export const postNewTripBooking = (currentUser , input, today) => {
+export const postNewTripBooking = (currentUser , bookingObj, destinationObj, mainData) => {
     console.log('post requests go here')
-    let booking = {id: Date.now(),
-         userID: currentUser.id,
-             destinationID: 0,
-                 travelers: 1,
-                     date: 'YYYY/MM/DD',
-                      duration: 1,
-                         status: 'pending',
-                          suggestedActivities: []}; 
+    console.log("upcomingTripObject", bookingObj)
+       const parsedDate = dayjs(bookingObj.startDate, 'YYYY-MM-DD');
+       const formattedDate = parsedDate.format('YYYY/MM/DD');
+    let booking = {
+         id: Date.now(),
+         userID: parseInt(currentUser.id),
+         destinationID: parseInt(destinationObj.id),
+         locationName: bookingObj.locationName,
+         travelers: parseInt(bookingObj.travelers),
+         date: formattedDate,
+         duration: bookingObj.duration,
+         status: 'pending',
+         suggestedActivities: []}; 
 
     return fetch(newTripUrl, {
         method: 'POST',
@@ -31,9 +36,19 @@ export const postNewTripBooking = (currentUser , input, today) => {
         headers: {
             'Content-Type': 'application/json',
         },
-    }).then(generatePage())
+    })
+    .then (response => {
+        if(!response.ok) {
+            throw new Error('Request failed status: ${response.status}')
+        }
+        return response.json()
+    })
+    .then(data => {
+        console.log("response data:", data)
+    })
+    // .then(generatePage())
         .catch((error) => {
-        console.log(error);
+        console.log("Request error:", error);
         throw error;
     })
 }

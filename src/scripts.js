@@ -19,7 +19,9 @@ import "./images/globe-icon.png";
 import {
   signInButton,
   showMainPage,
+  showMainPage2,
   showBookingPage,
+  showBookingPage2,
   goToBookingBtn,
   updateTripsPage,
   createUpcomingCards,
@@ -36,9 +38,14 @@ import {
   bookingPanel,
   pendingTripBox,
   bookingPage2,
+  confirmationPage,
   createNewBookingCard,
   confirmBtn,
-  backToBookingBtn
+  backToBookingBtn,
+  allPages,
+  tripsHeaderBtn,
+  showPage,
+  tripsPage
 } from "./domUpdates";
 
 //Import functions
@@ -69,33 +76,16 @@ const mainData = {
   today: dayjs(),
 };
 
-signInButton.addEventListener("click", showMainPage);
-goToBookingBtn.addEventListener("click", showBookingPage);
+
 locationDropdown.addEventListener("change", () => {
   const selectedValue = locationDropdown.value;
   console.log("Selected location:", selectedValue);
 });
 
-confirmBtn.addEventListener("click", function(){
-  postNewTripBooking(mainData.currentUser, mainData.pendingVacation, searchDestinationByName(mainData.pendingVacation.locationName, mainData.destinations), mainData)
-  .then(()=> { showMainPage()
-    loadPage()})
-})
 window.addEventListener("load", () => {
   loadPage()
-  // getData;
-  // Promise.all(getData()).then((promises) => {
-  //   mainData.trips = promises[0].trips;
-  //   mainData.travelers = promises[1].travelers;
-  //   mainData.destinations = promises[2].destinations;
-  //   console.log("mainData", mainData);
-  //   console.log("mainData.trips", mainData.trips);
-  //   console.log("mainData.travelers", mainData.travelers);
-  //   getUserData();
-  //   getDescriptiveData();
-  //   generatePage();
   });
-// });
+
 const loadPage = () => {
   getData;
   Promise.all(getData()).then((promises) => {
@@ -110,6 +100,24 @@ const loadPage = () => {
     generatePage();
   });
 }
+
+//BUTTON CLICK EVENTS:
+tripsHeaderBtn.addEventListener("click", ()=> {
+  showPage(tripsPage)
+});
+
+signInButton.addEventListener("click", () => {
+  showPage(tripsPage)
+});
+
+goToBookingBtn.addEventListener("click", () => {
+  showPage(bookingPage)
+});
+
+backToBookingBtn.addEventListener("click", () => {
+  showPage(bookingPage)
+})
+
 newBookingBtn.addEventListener("click", () => {
   const vacation = {
     startDate: startDate.value,
@@ -118,13 +126,19 @@ newBookingBtn.addEventListener("click", () => {
     travelers: numberTravelers.value,
   };
   mainData.pendingVacation = vacation;
-  bookingPanel.classList.add("hidden");
-  bookingPage2.classList.remove("hidden");
+  showPage(confirmationPage);
   const newDuration = calculateNumDays(mainData.pendingVacation.startDate, mainData.pendingVacation.endDate)
   mainData.pendingVacation.duration = newDuration
   console.log("vacation2", vacation);
   createNewBookingCard(mainData.pendingVacation, searchDestinationByName(vacation.locationName, mainData.destinations))
+  
 });
+
+confirmBtn.addEventListener("click", () => {
+  postNewTripBooking(mainData.currentUser, mainData.pendingVacation, searchDestinationByName(mainData.pendingVacation.locationName, mainData.destinations), mainData)
+  .then(()=> { showPage(tripsPage)
+    loadPage()})
+})
 
 const getUserData = () => {
   mainData.currentUser = mainData.travelers[2];
@@ -152,5 +166,3 @@ const generatePage = () => {
   createUpcomingCards(getUpcoming(mainData.userTrips));
   createPastCards(sortSequentially(getPast(mainData.userTrips)));
 };
-
-console.log("This is the JavaScript entry file - your code begins here.");

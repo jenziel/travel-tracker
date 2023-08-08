@@ -254,7 +254,7 @@ button > p {
   padding-bottom: 60px;
   background-color: skyblue;
   min-height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -276,9 +276,11 @@ button > p {
   align-items: flex-start;
   justify-content: flex-start;
   width: 30vw;
+  height: auto;
 }
 .trip-card {
   /* max-height: 100%; */
+  height: auto;
   width: 30vw;
   border-radius: 30px;
   margin-top: 20px;
@@ -322,6 +324,7 @@ button > p {
 
 .type-of-trip {
   margin-bottom: 5vh;
+  height: auto;
 }
 
 #go-to-booking-page {

@@ -160,10 +160,9 @@ aside {
   height: 90vh;
   width: 30vw;
 }
-
+.booking-panel,
 .login-box {
   padding: 10px;
-  border: solid 2px red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -206,8 +205,10 @@ aside {
   border: none;
   cursor: pointer;
  }
-
-#signin {
+ #go-back-btn,
+ #confirm-btn,
+#go-to-booking-page,
+.submitBtn {
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 10px;
@@ -226,6 +227,7 @@ h1,
 .location {
   font-family: 'Electrolux Sans', 'san-serif';
 }
+.booking-panel,
 .login-box {
   padding: 20px;
   background-color: #f0f0f0;
@@ -312,14 +314,129 @@ button > p {
    flex-direction: column;
    justify-content: space-evenly;
 }
+
 .trips-header {
   margin-top: 10px;
   margin-bottom: 3vh;
 }
+
 .type-of-trip {
   margin-bottom: 5vh;
 }
 
+#go-to-booking-page {
+
+
+}
+.lower-pane-3 {
+  background-color: skyblue;
+  padding: 20px;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+}
+.booking-panel {
+  padding-left: 40px;
+  height: 60vh;
+  width: 50vw;
+  background-color: var(--light-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: 'Roboto Mono', monospace;
+}
+.new-booking-header,
+.date-section > input {
+  margin-top: 30px;
+}
+#end-date {
+  margin-left: 18px;
+}
+#num-travelers,
+#end-date,
+#start-date {
+  width: 15vw;
+}
+.flatpickr {
+  height: 100%;
+  width: 100%;
+}
+
+.location-dropdown {
+  position: relative;
+  width: 15vw;
+}
+.location-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 4vh;
+  margin-top: 4vh;
+  background-size: cover;
+}
+
+.location-section > label {
+  margin-top: 1vh;
+}
+.booking-panel-2 {
+  padding: 30px;
+  padding-bottom: 60px;
+  background-color: skyblue;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 90vh;
+}
+
+
+#location-dropdown {
+  padding: 8px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+#location-dropdown::-ms-expand {
+  display: none;
+}
+
+
+#location-dropdown:focus {
+  outline: none;
+  border-color: blue;
+}
+#new-booking-title {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#go-back-btn,
+#confirm-btn {
+  height: 50px;
+  width: 150px;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 1vh;
+}
+#go-back-btn{
+  width: 300px;
+}
+#pending-trip-container {
+  width: 35vw;
+}
+.button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:35vw;
+}
 .hidden {
   display: none;
 }

@@ -1,7 +1,7 @@
 console.log('fetch requests go here')
 const tripsUrl = 'http://localhost:3001/api/v1/trips'
 const travelersUrl = 'http://localhost:3001/api/v1/travelers'
-// const specificTravelersUrl = 'http://localhost:3001/api/v1/travelers/<id>'
+const specificTravelersUrl = `http://localhost:3001/api/v1/travelers/50`
 const destinationsUrl = 'http://localhost:3001/api/v1/destinations'
 const newTripUrl = 'http://localhost:3001/api/v1/trips'
 const endpoints = [tripsUrl, travelersUrl, destinationsUrl]
@@ -16,7 +16,6 @@ export const getData = () => {
 }
 export const postNewTripBooking = (currentUser , bookingObj, destinationObj, mainData) => {
     console.log('post requests go here')
-    console.log("upcomingTripObject", bookingObj)
        const parsedDate = dayjs(bookingObj.startDate, 'YYYY-MM-DD');
        const formattedDate = parsedDate.format('YYYY/MM/DD');
     let booking = {
@@ -51,4 +50,12 @@ export const postNewTripBooking = (currentUser , bookingObj, destinationObj, mai
         console.log("Request error:", error);
         throw error;
     })
+}
+
+export const signInUser = (id) => {
+    console.log('fetch requests go here 2')
+    return fetch(`http://localhost:3001/api/v1/travelers/${id}`) 
+    .then(response => response.json())
+    .then(data => console.log("fetch data", data))
+    .catch((error) => console.log(error))
 }

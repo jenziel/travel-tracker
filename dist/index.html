@@ -25,7 +25,7 @@
         <img src="./images/globe-icon.png" id="globe" alt="globe icon">
         <p> English</p>
       </button>
-      <button class="trips">
+      <button class="trips" title="show trips page">
         <p>Trips</p>
       </button>
       <button class="notifications" title="show notifications">
@@ -74,6 +74,7 @@
       <div class="booking-panel">
         <h1 class="new-booking-header">Book A Trip</h1>
         <div class="date-section">
+          <p class="dates-error"></p>
           <label for="start-date">Start Date: </label>
           <input type="date" placeholder="search for dates" id="start-date" min="2023-08-07"required>
         </div>
@@ -88,8 +89,9 @@
           </select>
         </div>
         <div class="num-travelers">
+          <p class="numTravelersError"></p>
           <label for="num-travelers">Number of travelers:</label>
-          <input type="number" placeholder="enter number of travelers" id="num-travelers" min=1 required>
+          <input type="number" placeholder="enter number of travelers" id="num-travelers" min=1 max=14 required>
         </div>
         <button class="submitBtn" id="newBookingBtn">Submit</button>
         </div>

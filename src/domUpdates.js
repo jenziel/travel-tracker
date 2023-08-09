@@ -13,6 +13,13 @@ export const confirmBtn = document.querySelector("#confirm-btn");
 export const backToBookingBtn = document.querySelector('#go-back-btn')
 export const tripsHeaderBtn = document.querySelector(".trips")
 
+//INPUTS 
+export const userName = document.querySelector('#username')
+export const passWord = document.querySelector('#current-password')
+//ERROR MESSAGES
+export const datesError = document.querySelector(".dates-error")
+export const numTravelersError = document.querySelector(".numTravelersError")
+
 export const tripsTitle = document.querySelector(".trips-header");
 export const tripsTest = document.querySelector(".user-trips");
 export const upcomingTrip1 = document.querySelector(".location");

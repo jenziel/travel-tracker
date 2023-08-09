@@ -440,6 +440,11 @@ button > p {
   justify-content: space-between;
   width:35vw;
 }
+.numTravelersError,
+.dates-error {
+  color: var(--red);
+  margin-top: 10px;
+}
 .hidden {
   display: none;
 }

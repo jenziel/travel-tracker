@@ -5,7 +5,6 @@ export const getUserTrips = (allTrips, currentUserId) => {
     const filteredTrips = allTrips.filter(trip => {
     return trip.userID === currentUserId
  })
- console.log('getUserTrips result:', filteredTrips)
  return filteredTrips
 }
 
@@ -68,7 +67,6 @@ export const getUpcoming = (userTrips) => {
     const justUpcoming = userTrips.filter(trip => {
         return trip.category === "upcoming" 
     })
-    console.log("justUpcoming". justUpcoming)
     return justUpcoming
 }
 export const getPast = (userTrips) => {
@@ -99,7 +97,9 @@ export const getAnnualSpending = (annualTrips) => {
         sum += AllFeesIncluded;
         return sum
     }, 0)
-    return annualCost
+    const dollarAmtFormat =  annualCost.toFixed(2)
+    const convertedToNum = parseFloat(dollarAmtFormat)
+    return convertedToNum
 }
 export const searchDestinationByName = (locationName, destinations) => {
     const destinationObject = destinations.find(destination => 
@@ -113,3 +113,61 @@ export const searchDestinationByName = (locationName, destinations) => {
     const numDays = end.diff(start, 'day');
     return numDays
  }
+
+ export const accessUserById = (uniqueID, travelers) => {
+    const travelerObject = travelers.find(traveler => 
+        traveler.id === uniqueID)
+        return travelerObject
+ }
+
+ export const checkForValidUsername = (username) => {
+    if (typeof username !== 'string' || username.length < 9) {
+        return false
+    }
+    const firstPart = username.slice(0, 8);
+    if(firstPart !== 'traveler') {
+        return false
+    }
+    const secondPart = username.slice(8);
+    if (secondPart.length > 2) {
+        return false
+    }
+    const remainingNumber = Number(secondPart);
+    if(isNaN(secondPart) || remainingNumber > 50 || remainingNumber === 0){
+        return false
+    }
+    return true
+  }
+  export const checkPassword = (password) => {
+    if (password === 'traveler'){
+        return true
+    }
+    else return false
+  }
+
+  export const checkValidDates = (startDate, endDate) => {
+    const today = dayjs();
+    const parsedStartDate = dayjs(startDate);
+    const parsedEndDate = dayjs(endDate);
+
+  if (!parsedStartDate.isValid() || !parsedEndDate.isValid()) {
+    return 'Invalid dates';
+  }
+
+  if (parsedStartDate.isAfter(parsedEndDate)) {
+    return 'Start date must be before end date';
+  }
+
+  if (parsedStartDate.isBefore(today)) {
+    return 'Start date cannot be in the past';
+  }
+
+  return 'Dates are valid';
+}
+
+export const checkValidNumPassengers = (number) => {
+    if (number < 1 || number > 14){
+        return 'Please enter a number between 1 and 14.'
+    }
+    return 'Number of passengers is valid'
+}

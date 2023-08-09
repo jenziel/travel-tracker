@@ -19,7 +19,6 @@ export const userName = document.querySelector('#username')
 export const passWord = document.querySelector('#current-password')
 
 //BOOKING INPUTS:
-export const bookingForm = document.querySelector("#booking-form")
 export const startDate = document.getElementById("start-date");
 export const endDate = document.getElementById("end-date");
 export const selectedLocation = document.getElementById('selected-location')
@@ -163,7 +162,3 @@ export const createNewBookingCard = (booking, destinationObj) => {
             </div>
         `;
 };
-
-export const clearForm = () => {
-   bookingForm.reset()
-}

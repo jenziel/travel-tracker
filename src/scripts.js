@@ -41,8 +41,6 @@ import {
   passwordError,
   locationError,
   selectedLocation,
-  clearForm,
-  bookingForm
 } from "./domUpdates";
 
 //FUNCTIONS
@@ -176,21 +174,16 @@ console.log("vacation", vacation)
   errorElements.forEach(error => {
     error.innerText = ""
   })
-  clearForm()
+
 });
 
 confirmBtn.addEventListener("click", () => {
-  postNewTripBooking(
-    mainData.currentUser,
+  postNewTripBooking(mainData.currentUser,
     mainData.pendingVacation,
-    searchDestinationByName(
-      mainData.pendingVacation.locationName,
-      mainData.destinations
-    ),
-    mainData
+    searchDestinationByName( mainData.pendingVacation.locationName,mainData.destinations)
   ).then(() => {
-    showPage(tripsPage);
     loadPage();
+    showPage(tripsPage);
   });
 });
 

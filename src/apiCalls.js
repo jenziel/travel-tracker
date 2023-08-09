@@ -6,6 +6,8 @@ const destinationsUrl = "http://localhost:3001/api/v1/destinations";
 const newTripUrl = "http://localhost:3001/api/v1/trips";
 const endpoints = [tripsUrl, travelersUrl, destinationsUrl];
 import dayjs from "dayjs";
+
+
 export const getData = () => {
   console.log("fetch requests go here 2");
   return endpoints.map((url) =>
@@ -14,13 +16,13 @@ export const getData = () => {
       .catch((error) => console.log(error))
   );
 };
+
+
 export const postNewTripBooking = (
   currentUser,
   bookingObj,
   destinationObj,
-  mainData
 ) => {
-  console.log("post requests go here");
   const parsedDate = dayjs(bookingObj.startDate, "YYYY-MM-DD");
   const formattedDate = parsedDate.format("YYYY/MM/DD");
   let booking = {
@@ -34,7 +36,6 @@ export const postNewTripBooking = (
     status: "pending",
     suggestedActivities: [],
   };
-
   return (
     fetch(newTripUrl, {
       method: "POST",

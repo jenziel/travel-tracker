@@ -170,7 +170,17 @@ aside {
   height: 50vh;
   width: 35vw;
 }
-
+.password-error-box,
+.username-error-box{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.password-error,
+.username-error{
+  margin-left: 5vw;
+}
 .login-email {
   display: flex;
   flex-direction: column;
@@ -440,6 +450,9 @@ button > p {
   justify-content: space-between;
   width:35vw;
 }
+
+.password-error,
+.username-error,
 .numTravelersError,
 .dates-error {
   color: var(--red);

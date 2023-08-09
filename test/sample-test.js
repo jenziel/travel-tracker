@@ -18,7 +18,8 @@ import {
   checkForValidUsername,
   checkPassword,
   checkValidDates,
-  checkValidNumPassengers
+  checkValidNumPassengers,
+  justDigits
 } from "../src/functions.js";
 
 describe("See if the tests are running", function () {
@@ -755,5 +756,12 @@ describe('functions to validate number inputs', function(){
   it('Should check that only whole numbers 1-14 can be passed in', function(){
     expect(checkValidNumPassengers(18)).to.equal( 'Please enter a number between 1 and 14.')
     expect(checkValidNumPassengers(0)).to.equal( 'Please enter a number between 1 and 14.')
+  })
+})
+
+describe('a function to isolate just the numbers in a username', function(){
+  it('Should check that only whole numbers 1-14 can be passed in', function(){
+    expect(justDigits('traveler40')).to.equal(40)
+    
   })
 })

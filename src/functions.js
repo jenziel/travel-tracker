@@ -171,3 +171,9 @@ export const checkValidNumPassengers = (number) => {
     }
     return 'Number of passengers is valid'
 }
+
+export const justDigits = (username) => {
+    const secondPart = username.slice(8);
+    const parsedNum = parseInt(secondPart)
+    return parsedNum
+}

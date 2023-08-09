@@ -1,10 +1,7 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 // An example of how you tell webpack to use a CSS (SCSS) file
 import "./css/styles.css";
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+// IMAGES
 import "./images/turing-logo.png";
 import "./images/arrow-down.png";
 import "./images/logo3.png";
@@ -14,8 +11,7 @@ import "./images/profile-logo.png";
 import "./images/bell1.png";
 import "./images/globe-icon.png";
 
-// Import domUpdates
-
+//DOM UPDATES
 import {
   signInButton,
   goToBookingBtn,
@@ -43,7 +39,7 @@ import {
   numTravelersError
 } from "./domUpdates";
 
-//Import functions
+//FUNCTIONS
 import {
   getUserTrips,
   sortTripsByDate,
@@ -63,23 +59,17 @@ import {
   checkForValidUsername,
   checkPassword,
   checkValidDates,
-  checkValidNumPassengers
+  checkValidNumPassengers,
+  justDigits
 } from "./functions";
 
-// Import API Calls
+// API CALLS
 import { getData, postNewTripBooking, signInUser} from "./apiCalls";
 
-// Main Data Object
-
+//DATA MODEL:
 const mainData = {
   today: dayjs(),
 };
-
-
-// locationDropdown.addEventListener("change", () => {
-//   const selectedValue = locationDropdown.value;
-//   console.log("Selected location:", selectedValue);
-// });
 
 // ON-PAGE-LOAD EVENTS:
 window.addEventListener("load", () => {
@@ -105,6 +95,7 @@ tripsHeaderBtn.addEventListener("click", ()=> {
   showPage(tripsPage)
 });
 
+//SUBMIT LOGIN INFO EVENT:
 signInButton.addEventListener("click", (e) => {
   e.preventDefault()
   const usernameInput = userName.value
@@ -113,7 +104,11 @@ signInButton.addEventListener("click", (e) => {
     un: usernameInput,
     pw: passwordInput,
   }
-  signInUser(signInData.un)
+  if(checkForValidUsername === true && checkPassword === true){
+    const uniqueID = justDigits(signInData.un)
+    signInUser(uniqueID)
+  }
+ 
   // .then(() => mainData.currentUser = data.id)
   .then(() => showPage(tripsPage))
 });

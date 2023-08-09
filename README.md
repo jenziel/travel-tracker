@@ -1,100 +1,72 @@
-# Webpack Starter Kit
-test 
+# Travel Tracker
+## 📝 Description
+Travel Tracker is app for a travel agency.  The app serves as an archive for keeping track of previous trips, as well as tracking money spent in a given year.  The app gives a user the ability to explore prices for trips they are interested in planning. 
 
-## Clone This Repo
+## Context
+This is my final project for Module 2 at Turing School of Software & Design.  It was completed over the course of one week.
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+### User Interface Process: 
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+I referenced the Expedia.com website layout when coming up with a layout.  I liked the simplicity of the site and that the trip cards were displayed chronologically from top to bottom.  I wanted to implement the accordion menu element to reveal the trips but ran out of time.  
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+For the icons I used vecteezy and downloaded the images as png files. 
 
-## Setup
+### Use of Web APIs:  
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+This project was my first chance to practice sending a POST request with multiple input fields included in the post.  
+It was also my first time working with day.js and the built-in calendar elements.
 
-Then install the library dependencies. Run:
 
-```bash
-npm install
-```
+## Learning Goals and Objectives
+1. Use object and array prototype methods to perform data manipulation. 
+2. Create a clear and accessible user interface. 
+3. Make network requests to retrieve data. 
+4. Implement a robust testing suite using TDD.
+5. Write DRY, reusable code that follows SRP (Single Responsibility Principle)
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
 
-## Where to Add Your Code
+## Authors
+* **Jen Ziel** -  [jenziel](https://github.com/jenziel)
 
-### JavaScript
+## 📷 Preview
+![TravelTrackerPreview](https://user-images.githubusercontent.com/130857864/259486211-974af934-4bf9-4170-9e8c-635f98c9aade.png)
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+![BookingPagePreview](https://user-images.githubusercontent.com/130857864/259487144-7163c187-27a2-4298-aef2-068c85f3f0d0.png)
 
-**Create all of your feature code files in the `src` directory.**
+![ConfirmTripPreview](https://user-images.githubusercontent.com/130857864/259488569-908ce928-f78b-4f3c-a050-34e945b21196.png)
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+![TripsPagePreview](https://user-images.githubusercontent.com/130857864/259487207-9d7d5cc4-9fa3-4ac9-ae37-3685859f1dfb.png)
 
-### HTML
+## 💻 Technologies Used
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)
+![Git](https://img.shields.io/badge/-Git-05122A?style=flat&logo=git)
+![Github](https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github)
+![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
+![Mocha](https://img.shields.io/badge/mocha.js-323330?style=for-the-badge&logo=mocha&logoColor=Brown)
+![Chai](https://img.shields.io/badge/chai.js-323330?style=for-the-badge&logo=chai&logoColor=red)
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
+## Installation and Setup Instructions
 
-### Images
+Clone down this repository. You will need `npm` installed globally on your machine.  
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+Installation:
 
-## How to View Your Code in Action
+`npm install`  
 
-In the terminal, run:
+To Start Server:
 
-```bash
-npm start
-```
+`npm start`
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+Paste this link into your web browser:
 
-```bash
-Project is running at http://localhost:8080/
-```
+`http://localhost:8080/`
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
 
----
+To Run Test Suite:
 
-## Test Files Organization
+`npm test`
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+You will also need to clone down the travel-tracker-api file. 

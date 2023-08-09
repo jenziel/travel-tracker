@@ -1,24 +1,15 @@
 export const dayjs = require('dayjs');
 
-// export const getRandomCurrentUser = (travelers) => {
-//     const randomIndex = Math.floor(Math.random() * travelers.length);
-//     let currentUser = travelers[randomIndex];
-//     return currentUser;
-//   };
 
 export const getUserTrips = (allTrips, currentUserId) => {
     const filteredTrips = allTrips.filter(trip => {
     return trip.userID === currentUserId
  })
- console.log('getUserTrips result:', filteredTrips)
  return filteredTrips
 }
 
 export const addDates = (userTrips) => {
-    console.log('userTrips', userTrips)
-   
     const updatedTrips = userTrips.map((trip) => {
-        console.log('trip', trip)
         const startDate = dayjs(trip.date);
         const formattedStartDate = startDate.format('MM-DD-YYYY');
         const endDate = startDate.add(trip.duration, 'day');
@@ -28,19 +19,14 @@ export const addDates = (userTrips) => {
        delete trip.date
        return trip
     })
-    console.log('updatedTrips', updatedTrips)
     return updatedTrips
 }
 export const sortSequentially = (updatedTrips) => {
     const sortedByClosestDate = updatedTrips.sort((a,b) =>{
-        console.log("a.startDate", a.startDate)
-        console.log("b.startDate", b.startDate)
         const startDateA = dayjs(a.startDate)
         const startDateB = dayjs(b.startDate)
         return startDateA.diff(startDateB, 'day')
     })
- 
-    console.log("sortedByClosestDate", sortedByClosestDate)
     return sortedByClosestDate
 }
 export const addLocationInfo = (userTrips, allDestinations) => {
@@ -52,7 +38,6 @@ export const addLocationInfo = (userTrips, allDestinations) => {
           }
           return trip
         })
-        console.log("updated trips hi", updatedTrips)
         return updatedTrips
     };
    
@@ -75,7 +60,6 @@ export const sortTripsByDate = (userTrips) => {
 }
 export const getPending = (userTrips) => {
     const justPending = userTrips.filter(trip => trip.category === "pending");
-    console.log("justPending", justPending)
     return justPending
 }
 
@@ -83,12 +67,10 @@ export const getUpcoming = (userTrips) => {
     const justUpcoming = userTrips.filter(trip => {
         return trip.category === "upcoming" 
     })
-    console.log("justUpcoming". justUpcoming)
     return justUpcoming
 }
 export const getPast = (userTrips) => {
     const justPast = userTrips.filter(trip => trip.category === "past" );
-    console.log("justPast:", justPast)
     return justPast
 }
 
@@ -99,34 +81,25 @@ export const getAnnualArray = (userTrips) => {
         const tripDate = dayjs(trip.startDate);
         return tripDate.isAfter(oneYearAgo) && tripDate.isBefore(today);
     })
-    console.log("pastYearData", pastYearData)
     return pastYearData
 }
 
 export const getAnnualSpending = (annualTrips) => {
-    const annualCost = annualTrips.reduce((sum, trip) => {
-        
+    const annualCost = annualTrips.reduce((sum, trip) => { 
         const numDays = trip.duration;
-        console.log("numDays", numDays)
         const numBookings = trip.travelers;
-        console.log("numBookings", numBookings)
         const dailyHotelCost = trip.fullDestinationInfo.estimatedLodgingCostPerDay;
-        console.log("dailyHotelCost:", dailyHotelCost)
         const roundTripFlight = trip.fullDestinationInfo.estimatedFlightCostPerPerson;
         const flightsTotal = (roundTripFlight * numBookings) 
-        console.log("flightsTotal", flightsTotal)
         const lodgingsTotal = (numDays * dailyHotelCost) * numBookings 
-        console.log("lodgingsTotal", lodgingsTotal)
         const totalBeforeTax = (flightsTotal) + (lodgingsTotal);
-        console.log(totalBeforeTax, "totalb4Tax")
         const AllFeesIncluded = (totalBeforeTax * .1) + totalBeforeTax;
-        console.log("w all the feeees", AllFeesIncluded)
         sum += AllFeesIncluded;
-        console.log("sum", sum)
         return sum
     }, 0)
-    console.log("annualCost", annualCost)
-    return annualCost
+    const dollarAmtFormat =  annualCost.toFixed(2)
+    const convertedToNum = parseFloat(dollarAmtFormat)
+    return convertedToNum
 }
 export const searchDestinationByName = (locationName, destinations) => {
     const destinationObject = destinations.find(destination => 
@@ -140,3 +113,61 @@ export const searchDestinationByName = (locationName, destinations) => {
     const numDays = end.diff(start, 'day');
     return numDays
  }
+
+ export const accessUserById = (uniqueID, travelers) => {
+    const travelerObject = travelers.find(traveler => 
+        traveler.id === uniqueID)
+        return travelerObject
+ }
+
+ export const checkForValidUsername = (username) => {
+    if (typeof username !== 'string' || username.length < 9) {
+        return false
+    }
+    const firstPart = username.slice(0, 8);
+    if(firstPart !== 'traveler') {
+        return false
+    }
+    const secondPart = username.slice(8);
+    if (secondPart.length > 2) {
+        return false
+    }
+    const remainingNumber = Number(secondPart);
+    if(isNaN(secondPart) || remainingNumber > 50 || remainingNumber === 0){
+        return false
+    }
+    return true
+  }
+  export const checkPassword = (password) => {
+    if (password === 'traveler'){
+        return true
+    }
+    else return false
+  }
+
+  export const checkValidDates = (startDate, endDate) => {
+    const today = dayjs();
+    const parsedStartDate = dayjs(startDate);
+    const parsedEndDate = dayjs(endDate);
+
+  if (!parsedStartDate.isValid() || !parsedEndDate.isValid()) {
+    return 'Invalid dates';
+  }
+
+  if (parsedStartDate.isAfter(parsedEndDate)) {
+    return 'Start date must be before end date';
+  }
+
+  if (parsedStartDate.isBefore(today)) {
+    return 'Start date cannot be in the past';
+  }
+
+  return 'Dates are valid';
+}
+
+export const checkValidNumPassengers = (number) => {
+    if (number < 1 || number > 14){
+        return 'Please enter a number between 1 and 14.'
+    }
+    return 'Number of passengers is valid'
+}

@@ -40,7 +40,9 @@ import {
   usernameError,
   passwordError,
   locationError,
-  selectedLocation
+  selectedLocation,
+  clearForm,
+  bookingForm
 } from "./domUpdates";
 
 //FUNCTIONS
@@ -174,6 +176,7 @@ console.log("vacation", vacation)
   errorElements.forEach(error => {
     error.innerText = ""
   })
+  clearForm()
 });
 
 confirmBtn.addEventListener("click", () => {

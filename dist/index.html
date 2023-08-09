@@ -81,9 +81,10 @@
           <label for="end-date">End Date: </label>
           <input type="date" placeholder="search for dates" id="end-date" min="2023-08-07" required>
         </div>
+        <p class="location-error"></p>
         <div class="location-section">
-          <label for="location-dropdown">Select a Location:</label>
-          <select id="location-dropdown">
+            <label for="location-dropdown">Select a Location:</label>
+          <select id="location-dropdown" required>
             <option id="selected-location" value="" disabled selected>Select a location</option>
           </select>
         </div>

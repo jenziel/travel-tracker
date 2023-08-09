@@ -17,12 +17,13 @@ export const tripsHeaderBtn = document.querySelector(".trips")
 //INPUTS:
 export const userName = document.querySelector('#username')
 export const passWord = document.querySelector('#current-password')
-
+export const selectedLocation = document.getElementById('selected-location')
 //ERROR MESSAGES
 export const datesError = document.querySelector(".dates-error")
 export const numTravelersError = document.querySelector(".numTravelersError")
 export const usernameError = document.querySelector(".username-error")
 export const passwordError = document.querySelector(".password-error")
+export const locationError = document.querySelector(".location-error")
 
 export const tripsTitle = document.querySelector(".trips-header");
 export const tripsTest = document.querySelector(".user-trips");

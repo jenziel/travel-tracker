@@ -6,6 +6,7 @@ export const tripsPage = document.querySelector(".lower-pane-2");
 export const bookingPage = document.querySelector(".lower-pane-3");
 export const confirmationPage = document.querySelector(".booking-panel-2");
 export const allPages = document.querySelectorAll('.page')
+
 //BUTTONS:
 export const signInButton = document.querySelector("#signin");
 export const newBookingBtn = document.querySelector("#newBookingBtn");
@@ -13,12 +14,15 @@ export const confirmBtn = document.querySelector("#confirm-btn");
 export const backToBookingBtn = document.querySelector('#go-back-btn')
 export const tripsHeaderBtn = document.querySelector(".trips")
 
-//INPUTS 
+//INPUTS:
 export const userName = document.querySelector('#username')
 export const passWord = document.querySelector('#current-password')
+
 //ERROR MESSAGES
 export const datesError = document.querySelector(".dates-error")
 export const numTravelersError = document.querySelector(".numTravelersError")
+export const usernameError = document.querySelector(".username-error")
+export const passwordError = document.querySelector(".password-error")
 
 export const tripsTitle = document.querySelector(".trips-header");
 export const tripsTest = document.querySelector(".user-trips");

@@ -38,18 +38,19 @@
   </header>
   <main>
     <section class="lower-pane-1 page">
-      <!-- <aside class="lower-pane-1">
-        <p></p>
-      </aside> -->
         <form action="" method="post" id="form" name="form" class="login-box">
           <p class="sign-in">Sign in</p>
           <p> Don't have an account? <span class="create-acct"> Create an account</span></p>
           <section class="login-email">        
-            <label for="username">Username</label>
+            <div class="username-error-box">
+              <label for="username">Username</label>  <p class="username-error"></p>
+            </div>
             <input id="username" name="username" type="username" placeholder=" " autocomplete="username" required>
-          </section>                
-          <section class="login-password">        
-            <label for="current-password">Password</label>
+          </section>              
+          <section class="login-password">     
+            <div class="password-error-box">
+              <label for="current-password">Password</label>  <p class="password-error"></p>
+            </div>    
             <input id="current-password" name="current-password" type="password" autocomplete="current-password" aria-describedby="password-constraints" required>
             <button id="toggle-password" type="button" aria-label="Show password as plain text. Warning: this will display your password on the screen.">Show password</button>
           </section>
@@ -57,14 +58,12 @@
         </form>
     </section>
     <section class="lower-pane-2 hidden page">
-     
       <div class="center-container">
         <button id="go-to-booking-page">
           Book A Trip
         </button>
         <p id="annual-spending">Year-to-Date spending:</p>
       <h1 class="trips-header">Trips</h1>
-      
       <p class="type-of-trip" id="upcomingContainer"> Upcoming:</p>
       <p class="type-of-trip" id="pendingContainer"> Pending:</p>
       <p class="type-of-trip" id="pastContainer">Past:</p>
@@ -100,23 +99,15 @@
     </section>
     <section class="booking-panel-2 hidden page">
       <h1 class="new-booking-header">Confirm this trip?</h1>
-      
       <p>You have 24 hours to cancel this booking when you press submit.</p>
       <p class="type-of-trip" id="pendingTripContainer"></p>
       <div class="button-box">
         <button id="go-back-btn">back to booking page</button>
         <button id="confirm-btn">submit</button>
-      </div>
-      
+      </div> 
     </section>
   </main>
-    
-    
-  
-
-  
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>

@@ -14,10 +14,17 @@ export const confirmBtn = document.querySelector("#confirm-btn");
 export const backToBookingBtn = document.querySelector('#go-back-btn')
 export const tripsHeaderBtn = document.querySelector(".trips")
 
-//INPUTS:
+//LOGIN INPUTS:
 export const userName = document.querySelector('#username')
 export const passWord = document.querySelector('#current-password')
+
+//BOOKING INPUTS:
+export const bookingForm = document.querySelector("#booking-form")
+export const startDate = document.getElementById("start-date");
+export const endDate = document.getElementById("end-date");
 export const selectedLocation = document.getElementById('selected-location')
+export const numberTravelers = document.getElementById("num-travelers");
+
 //ERROR MESSAGES
 export const datesError = document.querySelector(".dates-error")
 export const numTravelersError = document.querySelector(".numTravelersError")
@@ -34,9 +41,6 @@ export const annualSpendingMsg = document.querySelector("#annual-spending");
 export const goToBookingBtn = document.querySelector("#go-to-booking-page");
 export const locationDropdown = document.getElementById("location-dropdown");
 export const locationSection = document.querySelector(".location-section");
-export const startDate = document.getElementById("start-date");
-export const endDate = document.getElementById("end-date");
-export const numberTravelers = document.getElementById("num-travelers");
 export const location = document.getElementById("selected-location");
 export const bookingPanel = document.querySelector(".booking-panel");
 export const pendingTripBox = document.querySelector("#pendingTripContainer");
@@ -159,3 +163,7 @@ export const createNewBookingCard = (booking, destinationObj) => {
             </div>
         `;
 };
+
+export const clearForm = () => {
+   bookingForm.reset()
+}

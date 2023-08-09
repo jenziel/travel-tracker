@@ -170,6 +170,7 @@ aside {
   height: 50vh;
   width: 35vw;
 }
+.location-error-box,
 .password-error-box,
 .username-error-box{
   display:flex;
@@ -215,6 +216,7 @@ aside {
   border: none;
   cursor: pointer;
  }
+
  #go-back-btn,
  #confirm-btn,
 #go-to-booking-page,
@@ -233,10 +235,12 @@ aside {
 button {
   cursor: pointer;
 }
+
 h1,
 .location {
   font-family: 'Electrolux Sans', 'san-serif';
 }
+
 .booking-panel,
 .login-box {
   padding: 20px;
@@ -272,14 +276,17 @@ button > p {
   align-items: center;
   font-family: 'Roboto Mono', monospace;
 }
+
 #annual-spending {
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 10px;
 }
+
 .lower-pane-2 > h1 {
   margin-bottom: 20px;
 }
+
 .center-container {
   display:flex;
   flex-direction: column;
@@ -289,7 +296,6 @@ button > p {
   height: auto;
 }
 .trip-card {
-  /* max-height: 100%; */
   height: auto;
   width: 30vw;
   border-radius: 30px;
@@ -337,10 +343,6 @@ button > p {
   height: auto;
 }
 
-#go-to-booking-page {
-
-
-}
 .lower-pane-3 {
   background-color: skyblue;
   padding: 20px;
@@ -388,7 +390,7 @@ button > p {
   flex-direction: row;
   align-items: flex-start;
   margin-bottom: 4vh;
-  margin-top: 4vh;
+  margin-top: .5vh;
   background-size: cover;
 }
 
@@ -450,7 +452,7 @@ button > p {
   justify-content: space-between;
   width:35vw;
 }
-
+.location-error,
 .password-error,
 .username-error,
 .numTravelersError,

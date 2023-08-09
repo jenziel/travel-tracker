@@ -39,6 +39,8 @@ import {
   numTravelersError,
   usernameError,
   passwordError,
+  locationError,
+  selectedLocation
 } from "./domUpdates";
 
 //FUNCTIONS
@@ -139,11 +141,15 @@ newBookingBtn.addEventListener("click", () => {
       numberTravelers.value
     ));
   }
+ 
   if (
     checkValidNumPassengers(numberTravelers.value) ===
     "Number of passengers is valid"
   ) {
     numTravelersError.innerText = "";
+  }
+  if(!locationDropdown.value){
+   return locationError.innerText = 'Please select a location'
   }
 
   const vacation = {
@@ -152,7 +158,7 @@ newBookingBtn.addEventListener("click", () => {
     locationName: locationDropdown.value,
     travelers: numberTravelers.value,
   };
-
+console.log("vacation", vacation)
   mainData.pendingVacation = vacation;
   showPage(confirmationPage);
   const newDuration = calculateNumDays(
@@ -164,6 +170,10 @@ newBookingBtn.addEventListener("click", () => {
     mainData.pendingVacation,
     searchDestinationByName(vacation.locationName, mainData.destinations)
   );
+  const errorElements = [locationError, numTravelersError,  datesError]
+  errorElements.forEach(error => {
+    error.innerText = ""
+  })
 });
 
 confirmBtn.addEventListener("click", () => {

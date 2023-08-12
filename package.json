@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turingschool-examples/webpack-starter-kit.git"
+    "url": "git+https://github.com/jenziel/travel-tracker-api.git"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",

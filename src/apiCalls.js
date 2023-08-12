@@ -1,9 +1,9 @@
 console.log("fetch requests go here");
-const tripsUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app//api/v1/trips";
-const travelersUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app//api/v1/travelers";
-const specificTravelersUrl = `http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app//api/v1/travelers/50`;
-const destinationsUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app//api/v1/destinations";
-const newTripUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app//api/v1/trips";
+const tripsUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app/api/v1/trips";
+const travelersUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app/api/v1/travelers";
+const specificTravelersUrl = `http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app/api/v1/travelers/50`;
+const destinationsUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app/api/v1/destinations";
+const newTripUrl = "http://https://ziel-travel-tracker-cdnarcynv-jenziel.vercel.app/api/v1/trips";
 const endpoints = [tripsUrl, travelersUrl, destinationsUrl];
 import dayjs from "dayjs";
 

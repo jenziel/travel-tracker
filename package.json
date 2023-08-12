@@ -36,6 +36,5 @@
     "dayjs": "^1.11.9",
     "flatpickr": "^4.6.13"
   },
-  "homepage": "https://jenziel.github.io/travel-tracker/"
+  "homepage": "http://jenziel.github.io/travel-tracker/"
 }
-

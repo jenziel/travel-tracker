@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Tracker</title>
+  <link href="https://fonts.cdnfonts.com/css/electrolux-sans" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,700&family=Roboto+Mono:wght@100;200;300;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  
+  <header>
+    <div class="header-left-side">
+      <div class="circle">
+        <img src="./images/logo9.png" alt="blue globe with a red location pin icon">
+      </div>
+      <h1>Travel Tracker</h1>
+    </div>
+    <div class="header-right-side">
+      <button class="language" title="language menu">
+        <img src="./images/globe-icon.png" id="globe" alt="globe icon">
+        <p> English</p>
+      </button>
+      <button class="trips" title="show trips page">
+        <p>Trips</p>
+      </button>
+      <button class="notifications" title="show notifications">
+        <img src="./images/bell1.png" alt="bell icon">
+      </button>
+      <button class="user-profile" title="view profile">
+        <img src="./images/profile-logo.png" alt="silhouette of a person icon">
+      </button>
+    </div>
+  </header>
+  <main>
+    <section class="lower-pane-1 page">
+        <form action="" method="post" id="form" name="form" class="login-box">
+          <p class="sign-in">Sign in</p>
+          <p> Don't have an account? <span class="create-acct"> Create an account</span></p>
+          <section class="login-email">        
+            <div class="username-error-box">
+              <label for="username">Username</label>  <p class="username-error"></p>
+            </div>
+            <input id="username" name="username" type="username" placeholder=" " autocomplete="username" required>
+          </section>              
+          <section class="login-password">     
+            <div class="password-error-box">
+              <label for="current-password">Password</label>  <p class="password-error"></p>
+            </div>    
+            <input id="current-password" name="current-password" type="password" autocomplete="current-password" aria-describedby="password-constraints" required>
+            <button id="toggle-password" type="button" aria-label="Show password as plain text. Warning: this will display your password on the screen.">Show password</button>
+          </section>
+          <button class="submitBtn" id="signin">Sign in</button> 
+        </form>
+    </section>
+    <section class="lower-pane-2 hidden page">
+      <div class="center-container">
+        <button id="go-to-booking-page">
+          Book A Trip
+        </button>
+        <p id="annual-spending">Year-to-Date spending:</p>
+      <h1 class="trips-header">Trips</h1>
+      <p class="type-of-trip" id="upcomingContainer"> Upcoming:</p>
+      <p class="type-of-trip" id="pendingContainer"> Pending:</p>
+      <p class="type-of-trip" id="pastContainer">Past:</p>
+      </div>
+    </section> 
+    <section class="lower-pane-3 hidden page">
+      <div class="booking-panel">
+        <h1 class="new-booking-header">Book A Trip</h1>
+        
+          <div class="date-section">
+            <p class="dates-error"></p>
+            <label for="start-date">Start Date: </label>
+            <input type="date" placeholder="search for dates" id="start-date" min="2023-08-07"required>
+          </div>
+          <div class="date-section">
+            <label for="end-date">End Date: </label>
+            <input type="date" placeholder="search for dates" id="end-date" min="2023-08-07" required>
+          </div>
+          <p class="location-error"></p>
+          <div class="location-section">
+              <label for="location-dropdown">Select a Location:</label>
+            <select id="location-dropdown" required>
+              <option id="selected-location" value="" disabled selected>Select a location</option>
+            </select>
+          </div>
+          <div class="num-travelers">
+            <p class="numTravelersError"></p>
+            <label for="num-travelers">Number of travelers:</label>
+            <input type="number" placeholder="enter number of travelers" id="num-travelers" min=1 max=14 required>
+          </div>
+          <button class="submitBtn" id="newBookingBtn">Submit</button>
+          </div>
+       
+        
+      </div>
+      
+    </section>
+    <section class="booking-panel-2 hidden page">
+      <h1 class="new-booking-header">Confirm this trip?</h1>
+      <p>You have 24 hours to cancel this booking when you press submit.</p>
+      <p class="type-of-trip" id="pendingTripContainer"></p>
+      <div class="button-box">
+        <button id="go-back-btn">back to booking page</button>
+        <button id="confirm-btn">submit</button>
+      </div> 
+    </section>
+  </main>
+  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <script src="bundle.js"></script>
+</body>
+</html>
